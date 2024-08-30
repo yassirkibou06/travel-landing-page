@@ -6,29 +6,18 @@ export const navigation = [
     },
     {
         id: "1",
-        title: "Pricing",
-        url: "#pricing",
-    },
-    {
-        id: "2",
         title: "Services",
         url: "#services",
     },
     {
-        id: "3",
+        id: "2",
         title: "Offres",
         url: "#offres",
     },
     {
-        id: "4",
-        title: "New account",
-        url: "#signup",
+        id: "3",
+        title: "Contact",
+        url: "#contact",
         onlyMobile: true,
-    },
-    {
-        id: "5",
-        title: "Sign in",
-        url: "#login",
-        onlyMobile: true,
-    },
+    }
 ];

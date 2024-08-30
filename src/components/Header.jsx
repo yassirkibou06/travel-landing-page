@@ -75,13 +75,10 @@ const Header = () => {
 
                 <a
                     href="#signup"
-                    className="button hidden mr-4 text-sm bg-primary text-white rounded-3xl font-semibold px-4 py-2 transition-colors hover:text-black lg:block"
+                    className="button hidden mr-4 text-sm border border-primary hover:bg-primary hover:text-white rounded-3xl font-semibold px-8 py-2 transition-colors lg:block"
                 >
-                    New account
+                    Contact
                 </a>
-                <button className="hidden text-sm border border-primary rounded-3xl font-semibold px-4 py-2 lg:flex" href="#login">
-                    Sign in
-                </button>
                 {/**For Mobile */}
                 <button
                     className={`${openNavigation ? "absolute top-6 right-6" : "block"} lg:hidden`}
