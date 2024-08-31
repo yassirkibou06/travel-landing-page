@@ -41,7 +41,7 @@ const Header = () => {
 
     return (
         <div
-            className={`fixed z-[999] top-0 left-0 w-full h-[8rem] bg-white shadow-gray-100 transition-shadow ${showShadow ? 'shadow-sm' : 'shadow-none'}`}
+            className={`fixed z-[999] top-0 left-0 w-full h-full lg:h-[8rem] bg-white shadow-gray-100 transition-shadow ${showShadow ? 'shadow-sm' : 'shadow-none'}`}
         >
             <div className="hidden md:flex py-2 px-4 md:px-8 items-center justify-between border-b border-gray-100 text-gray-500">
                 <div className="flex items-center space-x-4">
@@ -67,9 +67,9 @@ const Header = () => {
                 </a>
 
                 <nav
-                    className={`${openNavigation ? "flex pt-10" : "hidden"} lg:static lg:flex lg:mx-auto lg:bg-transparent`}
+                    className={`${openNavigation ? "flex pt-10 md:pt-14" : "hidden"} lg:static lg:flex lg:mx-auto lg:bg-transparent`}
                 >
-                    <div className="z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
+                    <div className="z-2 flex space-y-0 md:space-y-8 lg:space-y-0 flex-col items-center justify-center m-auto lg:flex-row">
                         {navigation.map((item) => (
                             <a
                                 key={item.id}
@@ -91,7 +91,7 @@ const Header = () => {
                 </a>
                 {/* For Mobile */}
                 <button
-                    className={`${openNavigation ? "absolute top-6 right-6" : "block"} lg:hidden`}
+                    className={`${openNavigation ? "absolute top-6 md:top-10 right-6" : "block"} lg:hidden`}
                     onClick={toggleNavigation}
                 >
                     {openNavigation ? <BiX size={32} /> : <BiMenu size={32} />}
