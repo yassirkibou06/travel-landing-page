@@ -41,7 +41,7 @@ const Header = () => {
 
     return (
         <div
-            className={`fixed z-[999] top-0 left-0 w-full h-full lg:h-[8rem] bg-white shadow-gray-100 transition-shadow ${showShadow ? 'shadow-sm' : 'shadow-none'}`}
+            className={`fixed z-[999] top-0 left-0 w-full ${openNavigation ? 'h-full' : ''} lg:h-[8rem] bg-white shadow-gray-100 transition-shadow ${showShadow ? 'shadow-sm' : 'shadow-none'}`}
         >
             <div className="hidden md:flex py-2 px-4 md:px-8 items-center justify-between border-b border-gray-100 text-gray-500">
                 <div className="flex items-center space-x-4">
