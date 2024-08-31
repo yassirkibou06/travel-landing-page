@@ -5,7 +5,7 @@ import logo from '../assets/Images/Logo.png';
 const Footer = () => {
     return (
         <footer className="border-t border-gray-100 py-10 mt-24">
-            <div className="container mx-auto flex flex-col justify-center items-center lg:justify-between lg:items-start px-8">
+            <div className="container mx-auto flex flex-col lg:flex-row justify-center items-center lg:justify-between lg:items-start px-8">
                 <div className="footer-logo flex-shrink-0">
                     <img src={logo} alt="Travel Agency Logo" className="w-32" />
                 </div>
