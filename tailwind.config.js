@@ -4,10 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#d8c183',
+        'primary': '#f7ab3a',
+        'hero': '#f6f7fb'
       },
       fontFamily: {
         'roboto': ["Roboto", "sans-serif"],
+        'playfair': ["Playfair Display", "serif"]
       },
     },
   },

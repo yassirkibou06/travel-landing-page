@@ -3,30 +3,45 @@ import { BiMapAlt, BiMenu, BiPhoneCall, BiX } from "react-icons/bi";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { navigation } from "../constants/main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from '../assets/Images/Logo.png';
 
 const Header = () => {
     const pathname = useLocation();
     const [openNavigation, setOpenNavigation] = useState(false);
+    const [showShadow, setShowShadow] = useState(false);
 
     const toggleNavigation = () => {
-        if (openNavigation) {
-            setOpenNavigation(false);
-        } else {
-            setOpenNavigation(true);
-        }
+        setOpenNavigation(!openNavigation);
     };
 
     const handleClick = () => {
-        if (!openNavigation) return;
-
-        setOpenNavigation(false);
+        if (openNavigation) {
+            setOpenNavigation(false);
+        }
     };
+
+    // Handle scroll event to toggle shadow
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setShowShadow(true);
+            } else {
+                setShowShadow(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <div
-            className={`fixed z-[999] top-0 left-0 w-full h-[6rem] bg-white`}
+            className={`fixed z-[999] top-0 left-0 w-full h-[8rem] bg-white shadow-gray-100 transition-shadow ${showShadow ? 'shadow-sm' : 'shadow-none'}`}
         >
             <div className="hidden md:flex py-2 px-4 md:px-8 items-center justify-between border-b border-gray-100 text-gray-500">
                 <div className="flex items-center space-x-4">
@@ -39,7 +54,7 @@ const Header = () => {
                         <p className="font-medium text-sm">123 Main St, Anytown USA</p>
                     </div>
                 </div>
-                {/**right */}
+                {/* Right Side */}
                 <div className="flex items-center space-x-4">
                     <FaFacebook />
                     <FaXTwitter />
@@ -52,8 +67,7 @@ const Header = () => {
                 </a>
 
                 <nav
-                    className={`${openNavigation ? "flex pt-10" : "hidden"
-                        } lg:static lg:flex lg:mx-auto lg:bg-transparent`}
+                    className={`${openNavigation ? "flex pt-10" : "hidden"} lg:static lg:flex lg:mx-auto lg:bg-transparent`}
                 >
                     <div className="z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
                         {navigation.map((item) => (
@@ -61,11 +75,7 @@ const Header = () => {
                                 key={item.id}
                                 href={item.url}
                                 onClick={handleClick}
-                                className={`block text-2xl uppercase transition-colors hover:text-primary ${item.onlyMobile ? "lg:hidden" : ""
-                                    } px-8 py-8 md:py-4 lg:-mr-0.25 lg:text-xs lg:font-semibold ${item.url === pathname.hash
-                                        ? "z-2 lg:text-primary"
-                                        : "text-black"
-                                    } lg:leading-5 lg:hover:text-primary xl:px-10`}
+                                className={`block text-2xl uppercase transition-colors hover:text-primary ${item.onlyMobile ? "lg:hidden" : ""} px-8 py-8 md:py-4 lg:-mr-0.25 lg:text-xs lg:font-semibold ${item.url === pathname.hash ? "z-2 lg:text-primary" : "text-black"} lg:leading-5 lg:hover:text-primary xl:px-10`}
                             >
                                 {item.title}
                             </a>
@@ -79,7 +89,7 @@ const Header = () => {
                 >
                     Contact
                 </a>
-                {/**For Mobile */}
+                {/* For Mobile */}
                 <button
                     className={`${openNavigation ? "absolute top-6 right-6" : "block"} lg:hidden`}
                     onClick={toggleNavigation}
